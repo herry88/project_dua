@@ -15,4 +15,18 @@ class DbHelper {
     });
     return json.decode(response.body)['data'];
   }
+
+  //add Data
+  void addData(String nmproduct, String stock) async {
+    String myUrl = 'https://backendapilaravel-app.herokuapp.com/api/product';
+    http.post(Uri.parse(myUrl), headers: {
+      'Accept': 'application/json',
+    }, body: {
+      'nmproduct': nmproduct,
+      'stock': stock.toString(),
+    }).then((response){
+      print('Status Code : ${response.statusCode}');
+      print('body : ${response.body}');
+    });
+  }
 }

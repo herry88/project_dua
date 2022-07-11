@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:project_dua/helper/dbhelper.dart';
 
+import 'addpage.dart';
+
 class DashBoardPage extends StatefulWidget {
   const DashBoardPage({Key? key}) : super(key: key);
 
@@ -17,6 +19,16 @@ class _DashBoardPageState extends State<DashBoardPage> {
     return Scaffold(
       appBar: AppBar(
         title: Text('Dashboard'),
+      ),
+      drawer: Drawer(
+        child: ListView(
+          children: [
+            ListTile(
+              title: Text('Halaman Pertama'),
+              onTap: () {},
+            ),
+          ],
+        ),
       ),
       body: RefreshIndicator(
         onRefresh: () async {
@@ -41,11 +53,11 @@ class _DashBoardPageState extends State<DashBoardPage> {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           //halaman AddData
-          // Navigator.of(context).push(
-          //   MaterialPageRoute(
-          //     builder: ((context) => AddPage()),
-          //   ),
-          // );
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: ((context) => AddPage()), //karena blm dibuat
+            ),
+          );
         },
         child: const Icon(Icons.add),
       ),
