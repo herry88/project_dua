@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:project_dua/helper/dbhelper.dart';
+import 'package:project_dua/screen/dashboard.dart';
 
 class AddPage extends StatefulWidget {
   const AddPage({Key? key}) : super(key: key);
@@ -9,12 +10,13 @@ class AddPage extends StatefulWidget {
 }
 
 class _AddPageState extends State<AddPage> {
-  //panggil db helper 
+  //panggil db helper
   DbHelper dbHelper = DbHelper();
+
   //variable
   TextEditingController nmproduct = TextEditingController();
   TextEditingController stock = TextEditingController();
-  
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -33,6 +35,7 @@ class _AddPageState extends State<AddPage> {
             Container(
               height: 50.0,
               child: TextField(
+                controller: nmproduct,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   labelText: 'Nama Produk',
@@ -48,9 +51,10 @@ class _AddPageState extends State<AddPage> {
             Container(
               height: 50.0,
               child: TextField(
+                controller: stock,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
-                  labelText: 'Nama Produk',
+                  labelText: 'Stock',
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(5.0),
                   ),
@@ -68,6 +72,16 @@ class _AddPageState extends State<AddPage> {
                 ),
                 onPressed: () {
                   //fungsi simpan
+                  dbHelper.addData(
+                    nmproduct.text.trim(),
+                    stock.text.trim(),
+                  );
+                  //redirect ke halaman dashboard
+                  Navigator.of(context).pushReplacement(
+                    MaterialPageRoute(
+                      builder: ((context) => DashBoardPage()),
+                    ),
+                  );
                 },
                 child: const Text(
                   'Simpan Data',
