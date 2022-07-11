@@ -24,7 +24,7 @@ class _DashBoardPageState extends State<DashBoardPage> {
           await Future.delayed(
             const Duration(seconds: 5),
           );
-          //kita panggil getData 
+          //kita panggil getData
           setState(() {
             dbHelper.getData();
           });
@@ -37,6 +37,17 @@ class _DashBoardPageState extends State<DashBoardPage> {
                 : const Text('Loading terus...');
           },
         ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          //halaman AddData
+          // Navigator.of(context).push(
+          //   MaterialPageRoute(
+          //     builder: ((context) => AddPage()),
+          //   ),
+          // );
+        },
+        child: const Icon(Icons.add),
       ),
     );
   }
