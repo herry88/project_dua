@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:project_dua/helper/dbhelper.dart';
 
 class AddPage extends StatefulWidget {
   const AddPage({Key? key}) : super(key: key);
@@ -8,6 +9,12 @@ class AddPage extends StatefulWidget {
 }
 
 class _AddPageState extends State<AddPage> {
+  //panggil db helper 
+  DbHelper dbHelper = DbHelper();
+  //variable
+  TextEditingController nmproduct = TextEditingController();
+  TextEditingController stock = TextEditingController();
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -53,7 +60,23 @@ class _AddPageState extends State<AddPage> {
             Padding(
               padding: const EdgeInsets.only(top: 40.0),
             ),
-            
+            Container(
+              height: 50.0,
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Colors.orangeAccent,
+                ),
+                onPressed: () {
+                  //fungsi simpan
+                },
+                child: const Text(
+                  'Simpan Data',
+                  style: TextStyle(
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
           ],
         ),
       ),
