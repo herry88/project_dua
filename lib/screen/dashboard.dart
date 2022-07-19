@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:project_dua/helper/dbhelper.dart';
 
 import 'addpage.dart';
+import 'detailpage.dart';
 
 class DashBoardPage extends StatefulWidget {
   const DashBoardPage({Key? key}) : super(key: key);
@@ -74,10 +75,22 @@ class ItemList extends StatelessWidget {
     return ListView.builder(
       itemCount: list == null ? 0 : list!.length, //operator ternary
       itemBuilder: (context, index) {
-        return Card(
-          child: ListTile(
-            title: Text(
-              list![index]['nmproduct'],
+        return GestureDetector(
+          onTap: () {
+            Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) {
+                return DetailPage(
+                  list: list,
+                  index: index,
+                );
+              }),
+            );
+          },
+          child: Card(
+            child: ListTile(
+              title: Text(
+                list![index]['nmproduct'],
+              ),
             ),
           ),
         );

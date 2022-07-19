@@ -24,9 +24,20 @@ class DbHelper {
     }, body: {
       'nmproduct': nmproduct,
       'stock': stock.toString(),
-    }).then((response){
+    }).then((response) {
       print('Status Code : ${response.statusCode}');
       print('body : ${response.body}');
+    });
+  }
+
+  //delete
+  void deleteData(int id) async {
+    String myUrl =
+        'https://backendapilaravel-app.herokuapp.com/api/product/$id';
+    http.delete(Uri.parse(myUrl), headers: {
+      'Accept': 'application/json',
+    }).then((response){
+      print('Delete: ${response.body}');
     });
   }
 }
