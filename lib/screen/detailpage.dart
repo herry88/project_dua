@@ -76,7 +76,9 @@ class _DetailPageState extends State<DetailPage> {
                       width: 10.0,
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        confirm(context);
+                      },
                       style: ElevatedButton.styleFrom(
                         primary: Colors.red,
                       ),
